@@ -38,7 +38,7 @@ app.get('/api/courses/:matricule', (req, res) => {
   // Start the server 
   const port = process.env.PORT || 3000;
   app.listen(port, () => {
-    console.log('Server is running on port ${port}');
+    console.log(`Server is running on port ${port}`);
   });
 
   // This file enables us to run the Node.js server (using the command 'node server.js in command prompt')
