@@ -1,4 +1,4 @@
-const { expect } = require('chai');
+const chai = await import('chai');
 const sinon = require('sinon');
 const userController = require('../controllers/etudiantsController');
 const userModel = require('../models/etudiantsModel');
