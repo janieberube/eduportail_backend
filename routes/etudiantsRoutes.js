@@ -3,7 +3,7 @@
 
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/etudiantsController');
+const etudiantsController = require('../controllers/etudiantsController');
 
 // Define routes
 router.get('/etudiants', etudiantsController.getTousLesEtudiant);
