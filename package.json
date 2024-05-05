@@ -9,7 +9,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mysql": "^2.18.1",
+    "sinon": "^17.0.1"
   },
   "devDependencies": {
     "chai": "^5.1.0",
