@@ -18,7 +18,7 @@ exports.getTousLesEtudiants = (req, res) => {
 // Controller method to retrieve etudiant by matricule
 exports.getEtudiantParMatricule = (req, res) => {
     const matricule = req.params.matricule;
-    pool.query('SELECT * FROM etudiants WHERE id = ?', [matricule], (error, results) => {
+    pool.query('SELECT * FROM etudiants WHERE matricule = ?', [matricule], (error, results) => {
         if (error) {
             console.error('Error fetching etudiant:', error);
             res.status(500).json({ error: 'Internal Server Error' });
@@ -34,6 +34,6 @@ exports.getEtudiantParMatricule = (req, res) => {
 
 /*
 etudiantsController:     The controller is responsible for handling incoming HTTP requests, processing data, and returning appropriate HTTP responses. 
-                    It typically contains methods that define the application's behavior and business logic. In the case of a etudiantsController, it might include 
-                    methods for creating, retrieving, updating, and deleting etudiants, as well as any other etudiants-related operations.
+                        It typically contains methods that define the application's behavior and business logic. In the case of a etudiantsController, it might include 
+                        methods for creating, retrieving, updating, and deleting etudiants, as well as any other etudiants-related operations.
 */
