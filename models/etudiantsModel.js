@@ -26,18 +26,18 @@ exports.getEtudiantParMatricule = (matricule) => {
                 return;
             }
             if (results.length === 0) {
-                resolve(null);  // User not found
+                resolve(null);  // etudiant not found
             }
             else {
-                resolve(results[0]);    // Return the first user found
+                resolve(results[0]);    // Return the first etudiant found
             }
         });
     });
 };
 
 /*
-userModel:          The model represents the data and business logic of the application. It interacts with the database 
-                    to perform CRUD (Create, Read, Update, Delete) operations on the data. In the case of a userModel, it might include functions 
-                    for querying the database to retrieve user data, inserting new users into the database, updating existing users, deleting users, 
-                    and any other database-related operations specific to users.
+etudiantsModel:          The model represents the data and business logic of the application. It interacts with the database 
+                    to perform CRUD (Create, Read, Update, Delete) operations on the data. In the case of a etudiantsModel, it might include functions 
+                    for querying the database to retrieve etudiant data, inserting new etudiants into the database, updating existing etudiants, deleting etudiants, 
+                    and any other database-related operations specific to etudiants.
 */
