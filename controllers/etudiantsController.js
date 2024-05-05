@@ -5,7 +5,7 @@ const pool = require('../config/database');
 
 // Controller method to retrieve all etudiants
 exports.getTousLesEtudiants = (req, res) => {
-    pool.query('SELECT prenom FROM etudiants', (error, results) => {
+    pool.query('SELECT * FROM etudiants', (error, results) => {
         if (error) {
             console.error('Error fetching etudiants:', error);
             res.status(500).json({ error: 'Error fetching etudiants: ' + error.message });
