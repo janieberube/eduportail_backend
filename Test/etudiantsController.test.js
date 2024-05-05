@@ -4,41 +4,39 @@ const sinon = require('sinon');
 const userController = require('../controllers/etudiantsController');
 const userModel = require('../models/etudiantsModel');
 
-async function runTests()  {
-
+async function runTests() {
     const chai = await import('chai');
     const { expect } = chai;
 
     describe('EtudiantsController', () => {
         describe('getTousLesEtudiants', () => {
-          it('should return all etudiants', async () => {
-            // Stub userModel.getTousLesEtudiants to return mock data
-            const mockEtudiants = [{ matricule: 2577423, name: 'Etudiant 1' }, { id: 2754356, name: 'Etudiant 2' }];
-            sinon.stub(etudiantsModel, 'getTousLesEtudiants').resolves(mockEtudiants);
-      
-            // Mock Express req and res objects
-            const req = {};
-            const res = { json: sinon.stub() };
-      
-            // Call the controller method
-            await userController.getTousLesEtudiants(req, res);
-      
-            // Verify the response
-            expect(res.json.calledOnce).to.be.true;
-            expect(res.json.firstCall.args[0]).to.deep.equal(mockEtudiants);
-      
-            // Restore the stub
-            etudiantsModel.getTousLesEtudiants.restore();
-          });
-        });
-      
-        // Add more test cases for other controller methods as needed
-      });
+            it('should return all etudiants', async () => {
+                // Stub userModel.getTousLesEtudiants to return mock data
+                const mockEtudiants = [{ matricule: 2577423, name: 'Etudiant 1' }, { id: 2754356, name: 'Etudiant 2' }];
+                sinon.stub(userModel, 'getTousLesEtudiants').resolves(mockEtudiants);
 
-      run();
+                // Mock Express req and res objects
+                const req = {};
+                const res = { json: sinon.stub() };
+
+                // Call the controller method
+                await userController.getTousLesEtudiants(req, res);
+
+                // Verify the response
+                expect(res.json.calledOnce).to.be.true;
+                expect(res.json.firstCall.args[0]).to.deep.equal(mockEtudiants);
+
+                // Restore the stub
+                userModel.getTousLesEtudiants.restore();
+            });
+        });
+
+        // Add more test cases for other controller methods as needed
+    });
 }
 
-runTests();
+runTests(); // Correct function call to run the tests
+
 
 
 
