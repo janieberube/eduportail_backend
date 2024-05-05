@@ -8,7 +8,7 @@ exports.getTousLesEtudiants = (req, res) => {
     pool.query('SELECT prenom FROM etudiants', (error, results) => {
         if (error) {
             console.error('Error fetching etudiants:', error);
-            res.status(500).json({ error: 'Internal Server Error' });
+            res.status(500).json({ error: 'Error fetching etudiants: ' + error.message });
             return;
         }
         res.status(200).json(results);
@@ -21,7 +21,7 @@ exports.getEtudiantParMatricule = (req, res) => {
     pool.query('SELECT * FROM etudiants WHERE matricule = ?', [matricule], (error, results) => {
         if (error) {
             console.error('Error fetching etudiant:', error);
-            res.status(500).json({ error: 'Internal Server Error' });
+            res.status(500).json({ error: 'Error fetching etudiant: ' + error.message });
             return;
         }
         if (results.length === 0) {
