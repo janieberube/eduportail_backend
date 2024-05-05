@@ -1,3 +1,5 @@
+// etudiantsController.test.js
+
 const sinon = require('sinon');
 const userController = require('../controllers/etudiantsController');
 const userModel = require('../models/etudiantsModel');
@@ -35,6 +37,8 @@ async function runTests()  {
 
       run();
 }
+
+runTests();
 
 
 
