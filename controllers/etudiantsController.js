@@ -1,7 +1,7 @@
 // etudiantsController.js
 // handle user-related logic for etudiants
 
-const pool = require('./config/database'); 
+const pool = require('../config/database'); 
 
 // Controller method to retrieve all etudiants
 exports.getTousLesEtudiants = (req, res) => {

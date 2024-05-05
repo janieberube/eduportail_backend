@@ -1,7 +1,7 @@
 // etudiantsModel.js
 // define the schema and interacting with the etudiants table
 
-const pool = require('./config/database'); 
+const pool = require('../config/database'); 
 
 // Function to retrieve all etudiants from the db
 exports.getTousLesEtudiants = (resolve, reject) => {
