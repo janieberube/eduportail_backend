@@ -33,3 +33,9 @@ exports.getEtudiantParMatricule = (req, res) => {
     res.status(200).json(results[0]);
   });
 };
+
+/*
+userController:     The controller is responsible for handling incoming HTTP requests, processing data, and returning appropriate HTTP responses. 
+                    It typically contains methods that define the application's behavior and business logic. In the case of a userController, it might include 
+                    methods for creating, retrieving, updating, and deleting users, as well as any other user-related operations.
+*/
