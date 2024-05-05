@@ -6,9 +6,9 @@ const mysql = require('mysql');
 // Create connection pool
 const pool = mysql.createPool({
     host: 'qf5dic2wzyjf1x5x.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-    user: 'your-nn2sv8r76frguu1j-user',
-    password: 'your-database-pf6btu922dkwpbpklassword',
-    database: 'your-databkxqlkxy9ovy8mg96ase-name'
+    user: 'nn2sv8r76frguu1j',
+    password: 'f6btu922dkwpbpkl',
+    database: 'kxqlkxy9ovy8mg96'
 });
 
 // Export the pool for shared use across the application
