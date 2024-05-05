@@ -5,7 +5,6 @@ const mysql = require('mysql');
 
 // Create connection pool
 const pool = mysql.createPool({
-    connectionLimit: 10,
     host: 'qf5dic2wzyjf1x5x.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     user: 'your-nn2sv8r76frguu1j-user',
     password: 'your-database-pf6btu922dkwpbpklassword',
