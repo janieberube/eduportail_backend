@@ -16,7 +16,7 @@ exports.getTousLesEtudiants = (req, res) => {
   });
 };
 
-// Controller method to retrieve etudiant by ID
+// Controller method to retrieve etudiant by matricule
 exports.getEtudiantParMatricule = (req, res) => {
   const matricule = req.params.matricule;
 
