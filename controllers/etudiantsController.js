@@ -5,7 +5,7 @@ const pool = require('../config/database');
 
 // Controller method to retrieve all etudiants
 exports.getTousLesEtudiants = (req, res) => {
-    pool.query('SELECT * FROM etudiants', (error, results) => {
+    pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courriel, dateInscriptionProgramme FROM etudiants', (error, results) => {
         if (error) {
             console.error('Error fetching etudiants:', error);
             res.status(500).json({ error: 'Error fetching etudiants: ' + error.message });
@@ -18,7 +18,7 @@ exports.getTousLesEtudiants = (req, res) => {
 // Controller method to retrieve etudiant by matricule
 exports.getEtudiantParMatricule = (req, res) => {
     const matricule = req.params.matricule;
-    pool.query('SELECT * FROM etudiants WHERE matricule = ?', [matricule], (error, results) => {
+    pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courriel, dateInscriptionProgramme FROM etudiants WHERE matricule = ?', [matricule], (error, results) => {
         if (error) {
             console.error('Error fetching etudiant:', error);
             res.status(500).json({ error: 'Error fetching etudiant: ' + error.message });

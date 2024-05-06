@@ -5,7 +5,7 @@ const pool = require('../config/database');
 
 // Function to retrieve all etudiants from the db
 exports.getTousLesEtudiants = (resolve, reject) => {
-    pool.query('SELECT * FROM etudiants', (error, results) => {
+    pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courriel, dateInscriptionProgramme FROM etudiants', (error, results) => {
         if (error) {
             console.error('Error fetching etudiants:', error);
             reject(error);
@@ -19,7 +19,7 @@ exports.getTousLesEtudiants = (resolve, reject) => {
 exports.getEtudiantParMatricule = (matricule) => {
     return new Promise((resolve, reject) => {
         // Retrieve etudiant from the db by matricule
-        pool.query('SELECT * FROM etudiants WHERE id = ?', [matricule], (error, results) => {
+        pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courriel, dateInscriptionProgramme FROM etudiants WHERE id = ?', [matricule], (error, results) => {
             if (error) {
                 console.error('Error fetching etudiant:', error);
                 reject(error);
