@@ -1,49 +1,60 @@
-// etudiantsController.test.js
+// Fichier:             etudiantsController.test.js
+// Programmeurs:        Janie Bérubé, Clément Sonier, André Doucet
+// Bût:                 Fichier test pour le test du comportement des fonctions de etudiantsController.js
 
-const sinon = require('sinon');
-const etudiantsController = require('../controllers/etudiantsController');
+/*
+Necéssaire:     Mocha, Sinon et Chai
+                    installation: npm install --save-dev mocha sinon chai
+
+Pour tester:    Utiliser le Mocha test runner
+                    mocha etudiantsController.test.js           
+*/
+
+
+// Importation des modules
+const sinon = require('sinon');     // Sinon: création de stubs pour contrôler son comportement durant le testing
+const etudiantsController = require('../controllers/etudiantsController');        
 const etudiantsModel = require('../models/etudiantsModel');
 
 async function runTests() {
-    const chai = await import('chai');
+
+    // Importation de chai: assertion library (vérification du comportement des méthodes de etudiantsController.js)
+    const chai = await import('chai'); 
     const { expect } = chai;
 
+    // Définition des tests avec Mocha (fonctions it, describe) pour définir les tests
     describe('EtudiantsController', () => {
+
         describe('getTousLesEtudiants', () => {
+
             it('should return all etudiants', async () => {
-                // Stub etudiantsModel.getTousLesEtudiants to return mock data
+
+                // Stub etudiantsModel.getTousLesEtudiants pour retourner le mock data
                 const mockEtudiants = [{ matricule: 2577423, name: 'Etudiant 1' }, { id: 2754356, name: 'Etudiant 2' }];
                 sinon.stub(etudiantsModel, 'getTousLesEtudiants').resolves(mockEtudiants);
 
-                // Mock Express req and res objects
+                // Objets req et res de Mock Express
                 const req = {};
                 const res = { json: sinon.stub() };
 
-                // Call the controller method
+                // Appel de la méthode du controlleur
                 await etudiantsController.getTousLesEtudiants(req, res);
 
-                // Verify the response
+                // Vérification de la réponse (correspond au output attendu?)
                 expect(res.json.calledOnce).to.be.true;
                 expect(res.json.firstCall.args[0]).to.deep.equal(mockEtudiants);
 
-                // Restore the stub
+                // Restoration du stub
                 etudiantsModel.getTousLesEtudiants.restore();
+
             });
+
         });
 
-        // Add more test cases for other controller methods as needed
     });
+
 }
 
-runTests(); // Correct function call to run the tests
+runTests(); 
 
 
-
-
-/*
-    We use Mocha's describe and it functions to define test suites and test cases.
-    We use Chai's expect assertion library to make assertions about the expected behavior of the controller methods.
-    We use Sinon.js to create stubs for the etudiantsModel.getTousLesEtudiants method, allowing us to control its behavior during testing.
-    Inside the test case, we call the controller method (etudiantsController.getTousLesEtudiants) with mock request and response objects, 
-    then verify that the response matches the expected output.
-*/
