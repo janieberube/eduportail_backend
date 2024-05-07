@@ -29,6 +29,7 @@ exports.getTousLesCours = (req, res) => {
     });
 };
 
+/*
 // Méthode du contrôleur pour récupérer les cours pour un matricule spécifique
 exports.getCoursParMatricule = (req, res) => {
     const matricule = req.params.matricule;
@@ -45,6 +46,7 @@ exports.getCoursParMatricule = (req, res) => {
         res.status(200).json(results);
     });
 };
+*/
 
 // Après l'exécution de 'pool.query', la connexion est renvoyée au pool pour être réutilisée (voir fichier database.js)
 

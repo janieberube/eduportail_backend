@@ -12,7 +12,7 @@ const coursController = require('../controllers/coursController');
 
 // Définition des routes, association aux méthodes correspondantes des controlleurs
 router.get('/cours', coursController.getTousLesCours);
-router.get('/cours/:matricule', coursController.getCoursParMatricule);
+//router.get('/cours/:matricule', coursController.getCoursParMatricule);
 
 
 // Exportation du router pour pouvoir être utilisé ailleurs dans l'application

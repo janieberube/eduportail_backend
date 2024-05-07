@@ -26,6 +26,7 @@ module.exports.getTousLesCours = (req, res) => {
     });
 };
 
+/*
 // Fonction pour récupérer un cours par le matricule étudiant
 module.exports.getCoursParMatricule = (req, res) => {
     const matricule = req.params.matricule;
@@ -47,7 +48,7 @@ module.exports.getCoursParMatricule = (req, res) => {
         }
     });
 };
-
+*/
 
 
 
