@@ -7,7 +7,7 @@
 // Importation des modules
 const express = require('express'); 
 const router = express.Router();
-const etudiantsController = require('../controllers/coursController');
+const coursController = require('../controllers/coursController');
 
 
 // Définition des routes, association aux méthodes correspondantes des controlleurs
