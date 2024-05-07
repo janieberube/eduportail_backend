@@ -13,6 +13,10 @@ Contrôleur :            Responsable de la gestion des demandes HTTP entrantes, 
 const pool = require('../config/database'); 
 
 
+// Importation des fonctions du modèle
+const coursModel = require('../models/coursModel');
+
+
 // Méthode contrôleur pour récupérer tous les cours
 exports.getTousLesCours = (req, res) => {
     pool.query('SELECT sigle, titreCours FROM cours', (error, results) => {

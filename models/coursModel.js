@@ -15,7 +15,7 @@ const pool = require('../config/database');
 
 
 // Fonction pour récupérer tous les cours de la base de données
-exports.getTousLesCours = (req, res) => {
+module.exports.getTousLesCours = (req, res) => {
     pool.query('SELECT sigle, titreCours FROM cours', (error, results) => {
         if (error) {
             console.error('Erreur lors de la récupération des cours:', error);
@@ -27,7 +27,7 @@ exports.getTousLesCours = (req, res) => {
 };
 
 // Fonction pour récupérer un cours par le matricule étudiant
-exports.getCoursParMatricule = (req, res) => {
+module.exports.getCoursParMatricule = (req, res) => {
     const matricule = req.params.matricule;
     pool.query(`SELECT sigle, titreCours
                 FROM inscriptions
