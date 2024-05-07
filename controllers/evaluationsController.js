@@ -17,7 +17,7 @@ const pool = require('../config/database');
 const coursModel = require('../models/evaluationsModel');
 
 
-// Méthode du contrôleur pour récupérer les cours pour un matricule spécifique
+// Méthode du contrôleur pour récupérer les évaluations pour un matricule spécifique
 exports.getEvaluationsParMatricule = (req, res) => {
     const matricule = req.params.matricule;
     pool.query(`SELECT evaluations_etudiants.datePublication, evaluations_etudiants.notePointage, evaluations_etudiants.notePourcentage,
