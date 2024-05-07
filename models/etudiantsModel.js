@@ -16,7 +16,7 @@ const pool = require('../config/database');
 
 // Fonction pour récupérer tous les étudiants de la base de données
 exports.getTousLesEtudiants = (resolve, reject) => {
-    pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courriel, dateInscriptionProgramme FROM etudiants', (error, results) => {
+    pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courrielEtudiant, dateInscriptionProgramme FROM etudiants', (error, results) => {
         if (error) {
             console.error('Erreur lors de la récupération des étudiants:', error);
             reject(error);
@@ -30,7 +30,7 @@ exports.getTousLesEtudiants = (resolve, reject) => {
 // Fonction pour récupérer un étudiant par son matricule
 exports.getEtudiantParMatricule = (matricule) => {
     return new Promise((resolve, reject) => {
-        pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courriel, dateInscriptionProgramme FROM etudiants WHERE id = ?', [matricule], (error, results) => {
+        pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courrielEtudiant, dateInscriptionProgramme FROM etudiants WHERE id = ?', [matricule], (error, results) => {
             if (error) {
                 console.error('Erreur lors de la récupération de l\'étudiant:', error);
                 reject(error);
