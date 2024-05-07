@@ -1,9 +1,20 @@
-// etudiantsModel.js
-// define the schema and interacting with the etudiants table
+// Fichier:             etudiantsModel.js
+// Programmeurs:        Janie Bérubé, Clément Sonier, André Doucet
+// Bût:                 Défini le schéma (définir la structure des données) et l'interaction avec la table des étudiants
 
+/*
+Modèle :                Gère les données et la logique métier de l'application. 
+
+                        Il est responsable de définir comment les données sont structurées et manipulées
+                        et inclut des fonctions pour interagir avec la bd pour effectuer 
+                        des opérations CRUD (Create, Read, Update, Delete). 
+*/
+
+// Importation du module de configuration de la base de données distante
 const pool = require('../config/database'); 
 
-// Function to retrieve all etudiants from the db
+
+// Fonction pour récupérer tous les étudiants de la base de données
 exports.getTousLesEtudiants = (resolve, reject) => {
     pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courriel, dateInscriptionProgramme FROM etudiants', (error, results) => {
         if (error) {
@@ -15,10 +26,10 @@ exports.getTousLesEtudiants = (resolve, reject) => {
     });
 };
 
-// Function to retrieve etudiant by matricule from the db
+
+// Fonction pour récupérer un étudiant par son matricule
 exports.getEtudiantParMatricule = (matricule) => {
     return new Promise((resolve, reject) => {
-        // Retrieve etudiant from the db by matricule
         pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courriel, dateInscriptionProgramme FROM etudiants WHERE id = ?', [matricule], (error, results) => {
             if (error) {
                 console.error('Error fetching etudiant:', error);
@@ -26,18 +37,13 @@ exports.getEtudiantParMatricule = (matricule) => {
                 return;
             }
             if (results.length === 0) {
-                resolve(null);  // etudiant not found
+                resolve(null);          // Étudiant introuvable
             }
             else {
-                resolve(results[0]);    // Return the first etudiant found
+                resolve(results[0]);    // Retourne le premier étudiant trouvé
             }
         });
     });
 };
 
-/*
-etudiantsModel:          The model represents the data and business logic of the application. It interacts with the database 
-                    to perform CRUD (Create, Read, Update, Delete) operations on the data. In the case of a etudiantsModel, it might include functions 
-                    for querying the database to retrieve etudiant data, inserting new etudiants into the database, updating existing etudiants, deleting etudiants, 
-                    and any other database-related operations specific to etudiants.
-*/
+

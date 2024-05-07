@@ -1,5 +1,6 @@
 // server.js
 // set up a HTTP server using the Express.js framework
+// MVC (Model-View-Controller) architecture pattern
 
 const express = require('express');
 const etudiantsRoutes = require('./routes/etudiantsRoutes');

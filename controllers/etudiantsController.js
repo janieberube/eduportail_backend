@@ -1,27 +1,38 @@
-// etudiantsController.js
-// handle user-related logic for etudiants
+// Fichier:             etudiantsController.js
+// Programmeurs:        Janie Bérubé, Clément Sonier, André Doucet
+// Bût:                 Gérer la logique liée aux utilisateurs pour les étudiants
 
+/*
+Contrôleur :            Le contrôleur est responsable de la gestion des demandes HTTP entrantes, du traitement des données et du renvoi des réponses HTTP appropriées.
+                        Il contient généralement des méthodes qui définissent le comportement de l'application et la logique métier. 
+                        Il peut inclure des méthodes pour créer, récupérer, mettre à jour et supprimer des étudiants, ainsi que toute autre opération liée aux étudiants.
+*/
+
+
+// Importation du module de configuration de la base de données distante
 const pool = require('../config/database'); 
 
-// Controller method to retrieve all etudiants
+
+// Méthode contrôleur pour récupérer tous les étudiants
 exports.getTousLesEtudiants = (req, res) => {
     pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courriel, dateInscriptionProgramme FROM etudiants', (error, results) => {
         if (error) {
-            console.error('Error fetching etudiants:', error);
-            res.status(500).json({ error: 'Error fetching etudiants: ' + error.message });
+            console.error('Erreur lors de la récupération des étudiants:', error);
+            res.status(500).json({ error: 'Erreur lors de la récupération des étudiants: ' + error.message });
             return;
         }
         res.status(200).json(results);
     });
 };
 
-// Controller method to retrieve etudiant by matricule
+
+// Méthode du contrôleur pour récupérer un étudiant par son matricule
 exports.getEtudiantParMatricule = (req, res) => {
     const matricule = req.params.matricule;
     pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courriel, dateInscriptionProgramme FROM etudiants WHERE matricule = ?', [matricule], (error, results) => {
         if (error) {
             console.error('Error fetching etudiant:', error);
-            res.status(500).json({ error: 'Error fetching etudiant: ' + error.message });
+            res.status(500).json({ error: 'Erreur lors de la récupération des étudiants: ' + error.message });
             return;
         }
         if (results.length === 0) {
@@ -32,8 +43,5 @@ exports.getEtudiantParMatricule = (req, res) => {
     });
 };
 
-/*
-etudiantsController:     The controller is responsible for handling incoming HTTP requests, processing data, and returning appropriate HTTP responses. 
-                        It typically contains methods that define the application's behavior and business logic. In the case of a etudiantsController, it might include 
-                        methods for creating, retrieving, updating, and deleting etudiants, as well as any other etudiants-related operations.
-*/
+// Après l'exécution de 'pool.query', La connexion est renvoyée au pool pour être réutilisée (voir fichier database.js)
+
