@@ -28,26 +28,20 @@ module.exports.getTousLesCours = (req, res) => {
 
 
 // Fonction pour récupérer un cours par le matricule étudiant
-module.exports.getCoursParMatricule = (req, res) => {
-    const matricule = req.params.matricule;
-    pool.query(`SELECT sigle, titreCours
-                FROM inscriptions
-                INNER JOIN cours_livres ON inscriptions.cours_livres_idcours_livre = cours_livres.idcours_livre
-                INNER JOIN cours ON inscriptions.cours_sigle = cours.sigle
-                WHERE etudiant_matricule = ?`, [matricule], (error, results) => {
-        if (error) {
-            console.error('Erreur lors de la récupération des cours pour l\'étudiant:', error);
-            reject(error);
-            return;
-        }
-        if (results.length === 0) {
-            resolve(null);          // Cours introuvables
-        }
-        else {
-            resolve(results[0]);    // Retourne les cours 
-        }
+module.exports.getCoursParMatricule = (matricule) => {
+    return new Promise((resolve, reject) => {
+        pool.query('SELECT sigle, titreCours FROM cours WHERE etudiant_matricule = ?', [matricule], (error, results) => {
+            if (error) {
+                console.error('Erreur lors de la récupération des cours pour l\'étudiant:', error);
+                reject(error);
+                return;
+            }
+            resolve(results);
+        });
     });
 };
+
+
 
 
 
