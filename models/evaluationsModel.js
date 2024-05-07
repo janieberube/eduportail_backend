@@ -3,7 +3,7 @@
 // Bût:                 Défini le schéma (définir la structure des données) et l'interaction avec les tables pours les évaluations
 
 
-// Importation du module de configuration de la base de données distante
+// Importation du module de configuration de la base de données
 const pool = require('../config/database'); 
 
 

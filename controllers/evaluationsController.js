@@ -3,7 +3,7 @@
 // Bût:                 Gérer la logique liée aux évaluations
 
 
-// Importation du module de configuration de la base de données distante
+// Importation du module de configuration de la base de données
 const pool = require('../config/database'); 
 
 

@@ -10,7 +10,7 @@ Modèle :                Gère les données et la logique métier de l'applicati
                         des opérations CRUD (Create, Read, Update, Delete). 
 */
 
-// Importation du module de configuration de la base de données distante
+// Importation du module de configuration de la base de données
 const pool = require('../config/database'); 
 
 

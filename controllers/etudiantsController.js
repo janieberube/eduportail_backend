@@ -9,7 +9,7 @@ Contrôleur :            Le contrôleur est responsable de la gestion des demand
 */
 
 
-// Importation du module de configuration de la base de données distante
+// Importation du module de configuration de la base de données 
 const pool = require('../config/database'); 
 
 
