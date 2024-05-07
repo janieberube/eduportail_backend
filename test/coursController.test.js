@@ -31,21 +31,21 @@ async function runTests() {
 
                 // Stub coursModel.getTousLescours pour retourner le mock data
                 const mockcours = [{ matricule: 2577423, name: 'Etudiant 1' }, { id: 2754356, name: 'Etudiant 2' }];
-                sinon.stub(coursModel, 'getTousLescours').resolves(mockcours);
+                sinon.stub(coursModel, 'getTousLesCours').resolves(mockcours);
 
                 // Objets req et res de Mock Express
                 const req = {};
                 const res = { json: sinon.stub() };
 
                 // Appel de la méthode du controlleur
-                await coursController.getTousLescours(req, res);
+                await coursController.getTousLesCours(req, res);
 
                 // Vérification de la réponse (correspond au output attendu?)
                 expect(res.json.calledOnce).to.be.true;
                 expect(res.json.firstCall.args[0]).to.deep.equal(mockcours);
 
                 // Restoration du stub
-                coursModel.getTousLescours.restore();
+                coursModel.getTousLesCours.restore();
 
             });
 
