@@ -1,14 +1,7 @@
 // Fichier:             evaluationsModel.js
 // Programmeurs:        Janie Bérubé, Clément Sonier, André Doucet
-// Bût:                 Défini le schéma (définir la structure des données) et l'interaction avec les tables pours les cours
+// Bût:                 Défini le schéma (définir la structure des données) et l'interaction avec les tables pours les évaluations
 
-/*
-Modèle :                Gère les données et la logique métier de l'application. 
-
-                        Il est responsable de définir comment les données sont structurées et manipulées
-                        et inclut des fonctions pour interagir avec la bd pour effectuer 
-                        des opérations CRUD (Create, Read, Update, Delete). 
-*/
 
 // Importation du module de configuration de la base de données distante
 const pool = require('../config/database'); 

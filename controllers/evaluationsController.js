@@ -2,12 +2,6 @@
 // Programmeurs:        Janie Bérubé, Clément Sonier, André Doucet
 // Bût:                 Gérer la logique liée aux évaluations
 
-/*
-Contrôleur :            Responsable de la gestion des demandes HTTP entrantes, du traitement des données et du renvoi des réponses HTTP appropriées.
-
-                        Il contient généralement des méthodes qui définissent le comportement de l'application et la logique métier. 
-                        Il peut inclure des méthodes pour créer, récupérer, mettre à jour et supprimer des étudiants, ainsi que toute autre opération liée aux étudiants.
-*/
 
 // Importation du module de configuration de la base de données distante
 const pool = require('../config/database'); 
@@ -38,8 +32,4 @@ exports.getEvaluationsParMatricule = (req, res) => {
         res.status(200).json(results);
     });
 };
-
-
-// Après l'exécution de 'pool.query', la connexion est renvoyée au pool pour être réutilisée (voir fichier database.js)
-
 
