@@ -14,19 +14,6 @@ Modèle :                Gère les données et la logique métier de l'applicati
 const pool = require('../config/database'); 
 
 
-// Fonction pour récupérer tous les étudiants de la base de données
-exports.getTousLesEtudiants = (resolve, reject) => {
-    pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courrielEtudiant, dateInscriptionProgramme FROM etudiants', (error, results) => {
-        if (error) {
-            console.error('Erreur lors de la récupération des étudiants:', error);
-            reject(error);
-            return;
-        }
-        resolve(results);
-    });
-};
-
-
 // Fonction pour récupérer un étudiant par son matricule
 exports.getEtudiantParMatricule = (matricule) => {
     return new Promise((resolve, reject) => {

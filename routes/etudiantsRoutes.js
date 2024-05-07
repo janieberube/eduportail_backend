@@ -10,7 +10,6 @@ const router = express.Router();
 const etudiantsController = require('../controllers/etudiantsController');
 
 // Définition des routes, association aux méthodes correspondantes des controlleurs
-router.get('/etudiants', etudiantsController.getTousLesEtudiants);
 router.get('/etudiants/:matricule', etudiantsController.getEtudiantParMatricule);
 
 

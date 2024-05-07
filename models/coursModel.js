@@ -10,21 +10,9 @@ Modèle :                Gère les données et la logique métier de l'applicati
                         des opérations CRUD (Create, Read, Update, Delete). 
 */
 
+
 // Importation du module de configuration de la base de données distante
 const pool = require('../config/database'); 
-
-
-// Fonction pour récupérer tous les cours de la base de données
-module.exports.getTousLesCours = (req, res) => {
-    pool.query('SELECT sigle, titreCours FROM cours', (error, results) => {
-        if (error) {
-            console.error('Erreur lors de la récupération des cours:', error);
-            reject(error);
-            return;
-        }
-        resolve(results);
-    });
-};
 
 
 // Fonction pour récupérer un cours par le matricule étudiant

@@ -13,19 +13,6 @@ Contrôleur :            Le contrôleur est responsable de la gestion des demand
 const pool = require('../config/database'); 
 
 
-// Méthode contrôleur pour récupérer tous les étudiants
-exports.getTousLesEtudiants = (req, res) => {
-    pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courrielEtudiant, dateInscriptionProgramme FROM etudiants', (error, results) => {
-        if (error) {
-            console.error('Erreur lors de la récupération des étudiants:', error);
-            res.status(500).json({ error: 'Erreur lors de la récupération des étudiants: ' + error.message });
-            return;
-        }
-        res.status(200).json(results);
-    });
-};
-
-
 // Méthode du contrôleur pour récupérer un étudiant par son matricule
 exports.getEtudiantParMatricule = (req, res) => {
     const matricule = req.params.matricule;

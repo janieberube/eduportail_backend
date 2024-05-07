@@ -17,19 +17,6 @@ const pool = require('../config/database');
 const coursModel = require('../models/evaluationsModel');
 
 
-// Méthode contrôleur pour récupérer tous les cours
-exports.getTousLesEvaluations = (req, res) => {
-    pool.query(`SELECT sigle, titreCours FROM cours`, (error, results) => {
-        if (error) {
-            console.error('Erreur lors de la récupération des évaluations:', error);
-            res.status(500).json({ error: 'Erreur lors de la récupération des évaluations: ' + error.message });
-            return;
-        }
-        res.status(200).json(results);
-    });
-};
-
-
 // Méthode du contrôleur pour récupérer les cours pour un matricule spécifique
 exports.getEvaluationsParMatricule = (req, res) => {
     const matricule = req.params.matricule;
