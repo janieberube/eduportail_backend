@@ -35,8 +35,8 @@ exports.getCoursParMatricule = (req, res) => {
     const matricule = req.params.matricule;
     pool.query(`SELECT sigle, titreCours
                 FROM inscriptions
-                INNER JOIN cours_livres ON inscriptions.cours_livres_idcours_livre = cours_livres.idcours_livre
-                INNER JOIN cours ON inscriptions.cours_sigle = cours.sigle
+                INNER JOIN cours_livres ON inscriptions.Cours_Livres_idCours_Livre = cours_livres.idCours_Livre
+                INNER JOIN cours ON cours_livres.Cours_sigle = cours.sigle
                 WHERE etudiant_matricule = ?`, [matricule], (error, results) => {
         if (error) {
             console.error('Erreur lors de la récupération des cours:', error);

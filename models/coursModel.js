@@ -30,7 +30,11 @@ module.exports.getTousLesCours = (req, res) => {
 // Fonction pour récupérer un cours par le matricule étudiant
 module.exports.getCoursParMatricule = (matricule) => {
     return new Promise((resolve, reject) => {
-        pool.query('SELECT sigle, titreCours FROM cours WHERE etudiant_matricule = ?', [matricule], (error, results) => {
+        pool.query(`SELECT sigle, titreCours
+                    FROM inscriptions
+                    INNER JOIN cours_livres ON inscriptions.Cours_Livres_idCours_Livre = cours_livres.idCours_Livre
+                    INNER JOIN cours ON cours_livres.Cours_sigle = cours.sigle
+                    WHERE etudiant_matricule = ?`, [matricule], (error, results) => {
             if (error) {
                 console.error('Erreur lors de la récupération des cours pour l\'étudiant:', error);
                 reject(error);
