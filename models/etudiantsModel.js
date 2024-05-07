@@ -1,6 +1,6 @@
 // Fichier:             etudiantsModel.js
 // Programmeurs:        Janie Bérubé, Clément Sonier, André Doucet
-// Bût:                 Défini le schéma (définir la structure des données) et l'interaction avec la table des étudiants
+// Bût:                 Défini le schéma (définir la structure des données) et l'interaction avec les tables pours les étudiants
 
 /*
 Modèle :                Gère les données et la logique métier de l'application. 
@@ -18,7 +18,7 @@ const pool = require('../config/database');
 exports.getTousLesEtudiants = (resolve, reject) => {
     pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courriel, dateInscriptionProgramme FROM etudiants', (error, results) => {
         if (error) {
-            console.error('Error fetching etudiants:', error);
+            console.error('Erreur lors de la récupération des étudiants:', error);
             reject(error);
             return;
         }
@@ -32,7 +32,7 @@ exports.getEtudiantParMatricule = (matricule) => {
     return new Promise((resolve, reject) => {
         pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courriel, dateInscriptionProgramme FROM etudiants WHERE id = ?', [matricule], (error, results) => {
             if (error) {
-                console.error('Error fetching etudiant:', error);
+                console.error('Erreur lors de la récupération de l\'étudiant:', error);
                 reject(error);
                 return;
             }
