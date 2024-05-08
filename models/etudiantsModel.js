@@ -17,7 +17,8 @@ const pool = require('../config/database');
 // Fonction pour récupérer un étudiant par son matricule
 exports.getEtudiantParMatricule = (matricule) => {
     return new Promise((resolve, reject) => {
-        pool.query('SELECT prenom, nom, nomUtilisateur, matricule, courrielEtudiant, dateInscriptionProgramme FROM etudiants WHERE id = ?', [matricule], (error, results) => {
+        pool.query(`SELECT prenom, nom, nomUtilisateur, matricule, courrielEtudiant, dateInscriptionProgramme 
+                    FROM etudiants WHERE matricule = ?`, [matricule], (error, results) => {
             if (error) {
                 console.error('Erreur lors de la récupération de l\'étudiant:', error);
                 reject(error);
