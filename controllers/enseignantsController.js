@@ -8,7 +8,7 @@ const pool = require('../config/database');
 
 
 // Méthode du contrôleur pour récupérer un enseignant par le id de l'évaluation pour un étudiant
-exports.getEnseignantsParIdEvalEtudiant = (req, res) => {
+exports.getEnseignantParIdEvalEtudiant = (req, res) => {
     const idEvaluation_Etudiant = req.params.idEvaluation_Etudiant;
     pool.query(`SELECT enseignants.prenom, enseignants.nom
                 FROM enseignants
