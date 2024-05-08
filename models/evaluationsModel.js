@@ -10,7 +10,7 @@ const pool = require('../config/database');
 // Fonction pour récupérer les évaluations par le matricule étudiant
 module.exports.getEvaluationsParMatricule = (matricule) => {
     return new Promise((resolve, reject) => {
-        pool.query(`SELECT evaluations_etudiants.datePublication, evaluations_etudiants.notePointage, evaluations_etudiants.notePourcentage, evaluations_etudiants.retroaction,
+        pool.query(`SELECT DATE(evaluations_etudiants.datePublication) AS datePublication, evaluations_etudiants.notePointage, evaluations_etudiants.notePourcentage, evaluations_etudiants.retroaction,
                     evaluations.nomEvaluation, evaluations.ponderation, evaluations.pointage
                     FROM evaluations_etudiants 
                     INNER JOIN evaluations
