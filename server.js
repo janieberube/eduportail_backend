@@ -8,6 +8,7 @@
 const express = require('express');
 const etudiantsRoutes = require('./routes/etudiantsRoutes');
 const coursRoutes = require('./routes/coursRoutes');
+const evaluationsRoutes = require('./routes/evaluationsRoutes');
 
 
 // Créer une application Express
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 // Définir les routes avec le namspace /api
 app.use('/api', etudiantsRoutes);
 app.use('/api', coursRoutes);
+app.use('/api', evaluationsRoutes);
 
 
 // Commencer le serveur
