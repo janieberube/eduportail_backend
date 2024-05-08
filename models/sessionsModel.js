@@ -16,16 +16,11 @@ exports.getSessionsParMatricule = (matricule) => {
                     ON sessions.sessionID = inscriptions_sessions.Sessions_sessionID
                     WHERE inscriptions_sessions.Etudiants_matricule = ?`, [matricule], (error, results) => {
             if (error) {
-                console.error('Erreur lors de la récupération des sessions:', error);
+                console.error('Erreur lors de la récupération des sessions pour l\'étudiant:', error);
                 reject(error);
                 return;
             }
-            if (results.length === 0) {
-                resolve(null);         
-            }
-            else {
-                resolve(results[0]);    
-            }
+            resolve(results); 
         });
     });
 };
