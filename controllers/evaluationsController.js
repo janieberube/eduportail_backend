@@ -14,7 +14,7 @@ const coursModel = require('../models/evaluationsModel');
 // Méthode du contrôleur pour récupérer les évaluations pour un matricule spécifique
 exports.getEvaluationsParMatricule = (req, res) => {
     const matricule = req.params.matricule;
-    pool.query(`SELECT DATE(evaluations_etudiants.datePublication) AS datePublication, evaluations_etudiants.notePointage, evaluations_etudiants.notePourcentage, evaluations_etudiants.retroaction,
+    pool.query(`SELECT evaluations_etudiants.datePublication, evaluations_etudiants.notePointage, evaluations_etudiants.notePourcentage, evaluations_etudiants.retroaction,
                 evaluations.nomEvaluation, evaluations.ponderation, evaluations.pointage
                 FROM evaluations_etudiants 
                 INNER JOIN evaluations
