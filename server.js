@@ -6,10 +6,12 @@
 
 
 const express = require('express');
+
 const etudiantsRoutes = require('./routes/etudiantsRoutes');
 const coursRoutes = require('./routes/coursRoutes');
 const evaluationsRoutes = require('./routes/evaluationsRoutes');
 const sessionsRoutes = require('./routes/sessionsRoutes');
+const enseignantsRoutes = require('./routes/enseignantsRoutes');
 
 
 // Créer une application Express
@@ -27,6 +29,7 @@ app.use('/api', etudiantsRoutes);
 app.use('/api', coursRoutes);
 app.use('/api', evaluationsRoutes);
 app.use('/api', sessionsRoutes);
+app.use('/api', enseignantsRoutes);
 
 
 // Commencer le serveur
