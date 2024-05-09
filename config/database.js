@@ -33,7 +33,7 @@ const pool = mysql.createPool({
 
 // BD locale (pour testing)
 const pool = mysql.createPool({
-    host: '127.0.0.1',
+    host: 'localhost',
     port: 3308,
     user: 'root',
     password: 'PortailCcnb2024*',
