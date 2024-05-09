@@ -20,8 +20,9 @@ const mysql = require('mysql');
 // Il gère l'ouverture et la fermeture les connexions a la BD automatiquement (particularité de Node.js)
 
 
-/*
+
 // BD distante
+/*
 const pool = mysql.createPool({
     host: 'qf5dic2wzyjf1x5x.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     user: 'nn2sv8r76frguu1j',
@@ -39,7 +40,6 @@ const pool = mysql.createPool({
     password: 'PortailCcnb2024*',
     database: 'eduportail'
 });
-
 
 // Exporter le pool pour une utilisation partagée dans toute l'application
 module.exports = pool;
