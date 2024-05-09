@@ -13,7 +13,7 @@ const evaluationsRoutes = require('./routes/evaluationsRoutes');
 const sessionsRoutes = require('./routes/sessionsRoutes');
 const enseignantsRoutes = require('./routes/enseignantsRoutes');
 const programmesRoutes = require('./routes/programmesRoutes')
-const moyenneSouhaiteeRoutes = require('./routes/moyenneSouahiteeRoutes')
+const moyenneSouhaiteeRoutes = require('./routes/moyenneSouhaiteeRoutes')
 
 // Créer une application Express
 const app = express();
