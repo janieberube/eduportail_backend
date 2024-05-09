@@ -12,7 +12,7 @@ const coursRoutes = require('./routes/coursRoutes');
 const evaluationsRoutes = require('./routes/evaluationsRoutes');
 const sessionsRoutes = require('./routes/sessionsRoutes');
 const enseignantsRoutes = require('./routes/enseignantsRoutes');
-
+const programmesRoutes = require('./routes/programmesRoutes')
 
 // Créer une application Express
 const app = express();
@@ -30,7 +30,7 @@ app.use('/api', coursRoutes);
 app.use('/api', evaluationsRoutes);
 app.use('/api', sessionsRoutes);
 app.use('/api', enseignantsRoutes);
-
+app.use('/api', programmesRoutes);
 
 // Commencer le serveur
 const port = process.env.PORT || 3000;
