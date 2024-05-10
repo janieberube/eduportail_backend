@@ -7,7 +7,7 @@
 const pool = require('../config/database'); 
 
 
-// Fonction pour récupérer les sessions par son matricule
+// Fonction pour récupérer les sessions par le matricule
 exports.getSessionsParMatricule = (matricule) => {
     return new Promise((resolve, reject) => {
         pool.query(`SELECT sessions.nomSession
@@ -21,6 +21,26 @@ exports.getSessionsParMatricule = (matricule) => {
                 return;
             }
             resolve(results); 
+        });
+    });
+};
+
+// Fonction pour récupérer la session actuelle par le matricule
+exports.getSessionActuelleParMatricule = (matricule) => {
+    return new Promise((resolve, reject) => {
+        pool.query(`SELECT sessions.nomSession
+                    FROM sessions
+                    INNER JOIN inscriptions_sessions
+                    ON sessions.sessionID = inscriptions_sessions.Sessions_sessionID
+                    WHERE inscriptions_sessions.Etudiants_matricule = ?
+                    AND CURRENT_DATE() >= sessions.dateDebutSession 
+                    AND CURRENT_DATE() <= sessions.dateFinSession`, [matricule], (error, results) => {
+            if (error) {
+                console.error('Erreur lors de la session:', error);
+                reject(error);
+                return;
+            }
+            resolve(results[0]);    // Retourne la session actuelle
         });
     });
 };
