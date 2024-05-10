@@ -7,8 +7,8 @@
 const pool = require('../config/database'); 
 
 
-// Fonction pour récupérer les évaluations par le matricule étudiant
-module.exports.getEvaluationsParMatricule = (matricule) => {
+// Fonction pour récupérer les évaluations pour un id d'inscription
+module.exports.getEvaluationsParIdInscription = (idInscription) => {
     return new Promise((resolve, reject) => {
         pool.query(`SELECT evaluations_etudiants.datePublication, evaluations_etudiants.notePointage, evaluations_etudiants.notePourcentage, evaluations_etudiants.retroaction,
                     evaluations.nomEvaluation, evaluations.ponderation, evaluations.pointage
@@ -17,11 +17,17 @@ module.exports.getEvaluationsParMatricule = (matricule) => {
                     ON evaluations_etudiants.Evaluations_idEvaluation = evaluations.idEvaluation
                     INNER JOIN inscriptions
                     ON evaluations_etudiants.Inscriptions_idInscription = inscriptions.idInscription
-                    WHERE inscriptions.Etudiant_matricule = ?
+                    INNER JOIN cours_livres
+                    ON inscriptions.Cours_Livres_idCours_Livre = cours_livres.idCours_Livre
+                    INNER JOIN sessions
+                    ON cours_livres.Sessions_sessionID = sessions.sessionID
+                    WHERE inscriptions.idInscription = 2
                     AND evaluations_etudiants.publier = '1'
-                    ORDER BY evaluations_etudiants.datePublication DESC`, [matricule], (error, results) => {
+                    AND CURRENT_DATE() >= sessions.dateDebutSession 
+                    AND CURRENT_DATE() <= sessions.dateFinSession
+                    ORDER BY evaluations_etudiants.datePublication DESC`, [idInscription], (error, results) => {
             if (error) {
-                console.error('Erreur lors de la récupération des évaluations pour l\'étudiant:', error);
+                console.error('Erreur lors de la récupération des évaluations:', error);
                 reject(error);
                 return;
             }
