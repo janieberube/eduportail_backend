@@ -37,7 +37,7 @@ const pool = mysql.createPool({
     host: 'localhost',
     port: 3308,
     user: 'root',
-    password: 'PortailCcnb2024*',
+    password: '',
     database: 'eduportail'
 });
 
