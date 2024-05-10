@@ -11,7 +11,7 @@ const sessionsController = require('../controllers/sessionsController');
 
 // Définition des routes, association aux méthodes correspondantes des controlleurs
 router.get('/sessions/:matricule', sessionsController.getSessionsParMatricule);
-router.get('/sessionActuelle/:matricule', sessionsController.getSessionActuelleParMatricule);
+router.get('/sessionactuelle/:matricule', sessionsController.getSessionActuelleParMatricule);
 
 // Exportation du router pour pouvoir être utilisé ailleurs dans l'application
 module.exports = router;
