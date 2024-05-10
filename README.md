@@ -35,7 +35,7 @@ Le serveur sera démarré sur le port par défaut `3000`. Assurez-vous que ce po
 
 - `/api/etudiantsRoutes/{$matricule}` : Endpoint pour récupérer les données de l’étudiant
 - `/api/coursRoutes/{$matricule}` : Endpoint pour récupérer la liste de cours 
-- `/api/evaluationsRoutes/{$matricule}` : Endpoint pour récupérer la liste d’évaluations
+- `/api/evaluationsRoutes/{$idInscription}` : Endpoint pour récupérer la liste d’évaluations
 - `/api/sessionsRoutes/{$matricule}` : Endpoint pour récupérer la liste de sessions 
 - `/api/enseignantsRoutes/{$idEvaluation_Etudiant}` : Endpoint pour récupérer l’enseignant
 - `/api/programmesRoutes/{$matricule}` : Endpoint pour récupérer le programme
