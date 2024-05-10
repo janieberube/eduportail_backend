@@ -16,8 +16,7 @@ const pool = require('../config/database');
 // Méthode du contrôleur pour récupérer un étudiant par son matricule
 exports.getEtudiantParMatricule = (req, res) => {
     const matricule = req.params.matricule;
-    console.log("Matricule value received:", matricule); // Log the matricule value
-    pool.query(`SELECT prenom, nom, nomUtilisateur, matricule, courrielEtudiant, dateInscriptionProgramme 
+    pool.query(`SELECT prenom, nom, nomUtilisateur, matricule, courrielEtudiant, dateInscriptionProgramme, anneeEtudes
                 FROM etudiants WHERE matricule = ?`, [matricule], (error, results) => {
         if (error) {
             console.error('Erreur lors de la récupération des étudiants:', error);
