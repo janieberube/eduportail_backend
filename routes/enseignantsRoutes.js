@@ -10,7 +10,7 @@ const router = express.Router();
 const enseignantsController = require('../controllers/enseignantsController');
 
 // Définition des routes, association aux méthodes correspondantes des controlleurs
-router.get('/enseignants/:idEvaluation_Etudiant', enseignantsController.getEnseignantParIdEvalEtudiant);
+router.get('/enseignants/:idCours_Livre', enseignantsController.getEnseignantParIdCoursLivre);
 
 
 // Exportation du router pour pouvoir être utilisé ailleurs dans l'application

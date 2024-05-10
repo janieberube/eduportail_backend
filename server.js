@@ -26,12 +26,12 @@ app.get('/', (req, res) => {
     res.send('Exécution réussie du fichier server.js');
   });
 
-// Définir les routes avec le namspace /api
+// Définir les routes avec le namespace /api
 app.use('/api', etudiantsRoutes);
 app.use('/api', coursRoutes);
 app.use('/api', evaluationsRoutes);
 app.use('/api', sessionsRoutes);
-app.use('/api', enseignantsRoutes);
+app.use('/api', enseignantsRoutes);       // Ne pas utiliser le matricule dans le endpoint, celui-ci requiert le idCours_livre 
 app.use('/api', programmesRoutes);
 app.use('/api', moyenneSouhaiteeRoutes);
 
