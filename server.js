@@ -11,7 +11,7 @@ const etudiantsRoutes = require('./routes/etudiantsRoutes');
 const coursRoutes = require('./routes/coursRoutes');
 const evaluationsRoutes = require('./routes/evaluationsRoutes');
 const sessionsRoutes = require('./routes/sessionsRoutes');
-const enseignantsRoutes = require('./routes/enseignantsRoutes');
+const enseignantsRoutes = require('./routes/enseignantsRoutes'); //DONT USE STUDENT ID
 const programmesRoutes = require('./routes/programmesRoutes')
 const moyenneSouhaiteeRoutes = require('./routes/moyenneSouhaiteeRoutes')
 
