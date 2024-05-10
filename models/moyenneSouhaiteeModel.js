@@ -31,4 +31,23 @@ exports.getMoyenneSouhaiteeParMatricule = (matricule) => {
     });
 };
 
+// Fonction pour effectuer la mise à jour de la moyenne souhaitée par le matricule
+exports.updateMoyenneSouhaitee = (req, res) => {
+    const matricule = req.params.matricule;
+    const newMoyenneSouhaitee = req.body.newMoyenneSouhaitee; 
+    pool.query(`UPDATE inscriptions_sessions
+                INNER JOIN sessions ON sessions.sessionID = inscriptions_sessions.Sessions_sessionID
+                SET inscriptions_sessions.moyenneSouhaitee = ?
+                WHERE CURRENT_DATE() >= sessions.dateDebutSession 
+                AND CURRENT_DATE() <= sessions.dateFinSession
+                AND inscriptions_sessions.Etudiants_matricule = ?`, [newMoyenneSouhaitee, matricule], (error, results) => {
+        if (error) {
+            console.error('Erreur lors de la mise a jour de la moyenne souhaitée:', error);
+            reject(error);
+            return;
+        }
+        res.status(200).json({ message: 'Moyenne souhaitée mise à jour.' });
+    });
+};
+
 

@@ -11,7 +11,7 @@ const moyenneSouhaiteeController = require('../controllers/moyenneSouhaiteeContr
 
 // Définition des routes, association aux méthodes correspondantes des controlleurs
 router.get('/moyenneSouhaitee/:matricule', moyenneSouhaiteeController.getMoyenneSouhaiteeParMatricule);
-
+router.put('/moyenneSouhaitee/:matricule', moyenneSouhaiteeController.updateMoyenneSouhaitee);
 
 // Exportation du router pour pouvoir être utilisé ailleurs dans l'application
 module.exports = router;

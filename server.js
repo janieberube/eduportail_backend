@@ -18,12 +18,13 @@ const moyenneSouhaiteeRoutes = require('./routes/moyenneSouhaiteeRoutes')
 // Créer une application Express
 const app = express();
 
+// Permettre à Express de parser les données JSON dans les requêtes
+app.use(express.json());
 
 // Définir une route 
 app.get('/', (req, res) => {
     res.send('Exécution réussie du fichier server.js');
   });
-
 
 // Définir les routes avec le namspace /api
 app.use('/api', etudiantsRoutes);
