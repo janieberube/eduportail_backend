@@ -14,7 +14,7 @@ const coursModel = require('../models/coursModel');
 // Méthode du contrôleur pour récupérer les cours pour un matricule spécifique
 exports.getCoursParMatricule = (req, res) => {
     const matricule = req.params.matricule;
-    pool.query(`SELECT sigle, titreCours
+    pool.query(`SELECT inscriptions.idInscription, cours.sigle, cours.titreCours
                 FROM inscriptions
                 INNER JOIN cours_livres ON inscriptions.Cours_Livres_idCours_Livre = cours_livres.idCours_Livre
                 INNER JOIN cours ON cours_livres.Cours_sigle = cours.sigle

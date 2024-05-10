@@ -10,7 +10,7 @@ const pool = require('../config/database');
 // Fonction pour récupérer un cours par le matricule étudiant
 module.exports.getCoursParMatricule = (matricule) => {
     return new Promise((resolve, reject) => {
-        pool.query(`SELECT sigle, titreCours
+        pool.query(`SELECT inscriptions.idInscription, cours.sigle, cours.titreCours
                     FROM inscriptions
                     INNER JOIN cours_livres ON inscriptions.Cours_Livres_idCours_Livre = cours_livres.idCours_Livre
                     INNER JOIN cours ON cours_livres.Cours_sigle = cours.sigle
