@@ -12,7 +12,7 @@ const evaluationsModel = require('../models/evaluationsModel');
 
 
 // Méthode du contrôleur pour récupérer les évaluations pour un id d'inscription (pour un cours spécifique)
-exports.getTousLesEvaluationsPourEtudiant = (req, res) => {
+exports.getEvaluationsParIdInscription = (req, res) => {
     const idInscription = req.params.idInscription;
     pool.query(`SELECT evaluations_etudiants.datePublication, evaluations_etudiants.notePointage, evaluations_etudiants.notePourcentage, evaluations_etudiants.retroaction, types_evaluations.idType_Evaluation, evaluations.nomEvaluation, evaluations.ponderation, evaluations.pointage, cours.sigle
                 FROM evaluations_etudiants 
