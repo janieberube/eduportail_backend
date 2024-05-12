@@ -14,7 +14,7 @@ const evaluationsModel = require('../models/evaluationsModel');
 // Méthode du contrôleur pour récupérer les évaluations pour un id d'inscription
 exports.getEvaluationsParIdInscription = (req, res) => {
     const idInscription = req.params.idInscription;
-    pool.query(`SELECT evaluations_etudiants.datePublication, evaluations_etudiants.notePointage, evaluations_etudiants.notePourcentage, evaluations_etudiants.retroaction, types_evaluations.idType_Evaluation, evaluations.nomEvaluation, evaluations.ponderation, evaluations.pointage
+    pool.query(`SELECT evaluations_etudiants.datePublication, evaluations_etudiants.notePointage, evaluations_etudiants.notePourcentage, evaluations_etudiants.retroaction, types_evaluations.idType_Evaluation, evaluations.nomEvaluation, evaluations.ponderation, evaluations.pointage, cours.sigle
                 FROM evaluations_etudiants 
                 INNER JOIN evaluations
                 ON evaluations_etudiants.Evaluations_idEvaluation = evaluations.idEvaluation
@@ -24,6 +24,8 @@ exports.getEvaluationsParIdInscription = (req, res) => {
                 ON evaluations_etudiants.Inscriptions_idInscription = inscriptions.idInscription
                 INNER JOIN cours_livres
                 ON inscriptions.Cours_Livres_idCours_Livre = cours_livres.idCours_Livre
+                INNER JOIN cours
+                ON cours.sigle = cours_livres.Cours_sigle
                 INNER JOIN sessions
                 ON cours_livres.Sessions_sessionID = sessions.sessionID
                 WHERE inscriptions.idInscription = ?
