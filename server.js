@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 // Définir les routes avec le namespace /api
 app.use('/api', etudiantsRoutes);
 app.use('/api', coursRoutes);
-app.use('/api', evaluationsRoutes);       // Ne pas utiliser le matricule dans le endpoint, celui-ci requiert le idInscription
+app.use('/api', evaluationsRoutes);       // Voir evaluationsRoutes pour les parametres du endpoint
 app.use('/api', sessionsRoutes);
 app.use('/api', enseignantsRoutes);       // Ne pas utiliser le matricule dans le endpoint, celui-ci requiert le idCours_livre 
 app.use('/api', programmesRoutes);
