@@ -11,8 +11,9 @@ const evaluationsController = require('../controllers/evaluationsController');
 
 
 // Définition des routes, association aux méthodes correspondantes des controlleurs
-router.get('/evaluations/:idInscription', evaluationsController.getEvaluationsParIdInscription);
-router.get('/evaluations/:matricule', evaluationsController.getTousLesEvaluationsPourEtudiant);
+router.get('/evaluations/inscription/:idInscription', evaluationsController.getEvaluationsParIdInscription);
+router.get('/evaluations/matricule/:matricule', evaluationsController.getTousLesEvaluationsPourEtudiant);
+
 
 // Exportation du router pour pouvoir être utilisé ailleurs dans l'application
 module.exports = router;
