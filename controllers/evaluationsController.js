@@ -43,7 +43,7 @@ exports.getEvaluationsParIdInscription = (req, res) => {
 };
 
 exports.getTousLesEvaluationsPourEtudiant = (req, res) => {
-    const idInscription = req.params.matricule;
+    const matricule = req.params.matricule;
     pool.query(`SELECT evaluations_etudiants.datePublication, evaluations_etudiants.notePointage, evaluations_etudiants.notePourcentage, evaluations_etudiants.retroaction, types_evaluations.idType_Evaluation, evaluations.nomEvaluation, evaluations.ponderation, evaluations.pointage, cours.sigle
                 FROM evaluations_etudiants 
                 INNER JOIN evaluations
