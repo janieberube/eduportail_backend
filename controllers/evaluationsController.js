@@ -100,3 +100,67 @@ exports.getTousLesEvaluationsAvecRetro = (req, res) => {
         res.status(200).json(results);
     });
 };
+
+exports.getCoursForce = (req, res) => {
+    pool.query(`SELECT cours.sigle, AVG(evaluations_etudiants.notePourcentage) AS averageGrade
+                FROM evaluations_etudiants 
+                INNER JOIN evaluations
+                ON evaluations_etudiants.Evaluations_idEvaluation = evaluations.idEvaluation
+                INNER JOIN inscriptions
+                ON evaluations_etudiants.Inscriptions_idInscription = inscriptions.idInscription
+                INNER JOIN cours_livres
+                ON inscriptions.Cours_Livres_idCours_Livre = cours_livres.idCours_Livre
+                INNER JOIN cours
+                ON cours.sigle = cours_livres.Cours_sigle
+                INNER JOIN sessions
+                ON cours_livres.Sessions_sessionID = sessions.sessionID
+                WHERE evaluations_etudiants.publier = '1'
+                AND CURRENT_DATE() >= sessions.dateDebutSession 
+                AND CURRENT_DATE() <= sessions.dateFinSession
+                GROUP BY cours.sigle
+                ORDER BY averageGrade DESC
+                LIMIT 1`, (error, results) => {
+        if (error) {
+            console.error('Error fetching class with highest average:', error);
+            res.status(500).json({ error: 'Error fetching class with highest average: ' + error.message });
+            return;
+        }
+        if (results.length === 0) {
+            res.status(404).json({ error: 'No classes found' });
+            return;
+        }
+        res.status(200).json(results[0]);
+    });
+};
+
+exports.getCoursFaiblesse = (req, res) => {
+    pool.query(`SELECT cours.sigle, AVG(evaluations_etudiants.notePourcentage) AS averageGrade
+                FROM evaluations_etudiants 
+                INNER JOIN evaluations
+                ON evaluations_etudiants.Evaluations_idEvaluation = evaluations.idEvaluation
+                INNER JOIN inscriptions
+                ON evaluations_etudiants.Inscriptions_idInscription = inscriptions.idInscription
+                INNER JOIN cours_livres
+                ON inscriptions.Cours_Livres_idCours_Livre = cours_livres.idCours_Livre
+                INNER JOIN cours
+                ON cours.sigle = cours_livres.Cours_sigle
+                INNER JOIN sessions
+                ON cours_livres.Sessions_sessionID = sessions.sessionID
+                WHERE evaluations_etudiants.publier = '1'
+                AND CURRENT_DATE() >= sessions.dateDebutSession 
+                AND CURRENT_DATE() <= sessions.dateFinSession
+                GROUP BY cours.sigle
+                ORDER BY averageGrade ASC
+                LIMIT 1`, (error, results) => {
+        if (error) {
+            console.error('Error fetching class with lowest average:', error);
+            res.status(500).json({ error: 'Error fetching class with lowest average: ' + error.message });
+            return;
+        }
+        if (results.length === 0) {
+            res.status(404).json({ error: 'No classes found' });
+            return;
+        }
+        res.status(200).json(results[0]);
+    });
+};
