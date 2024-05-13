@@ -5,7 +5,6 @@
 
 /*
 Explication:            Utiliser ce fichier dans l'application Node.js pour établir des connexions avec la base de données MySQL et intéragir avec celle-ci (exécuter des requêtes).
-                        N'oubliez pas de gérer les erreurs et de fermer les connexions à la base de données de manière appropriée dans votre application pour assurer une gestion des ressources et des erreurs adéquate.
 */
 
 const mysql = require('mysql');
