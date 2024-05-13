@@ -2,11 +2,6 @@
 // Programmeurs:        Janie Bérubé, Clément Sonier, André Doucet
 // Bût:                 Configuration de la connexion de la base de données MySQL 
 
-/*
-You can now use this database.js file in your Node.js application to establish connections to your MySQL database and execute queries. 
-When you need to interact with the database, import the database.js file into your other modules and use the connection pool to execute queries.
-Remember to handle errors and close database connections appropriately in your application to ensure proper resource management and error handling.
-*/
 
 /*
 Explication:            Utiliser ce fichier dans l'application Node.js pour établir des connexions avec la base de données MySQL et intéragir avec celle-ci (exécuter des requêtes).
