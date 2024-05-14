@@ -16,17 +16,18 @@ const mysql = require('mysql');
 
 
 // BD distante
-/*
+
 const pool = mysql.createPool({
     host: 'qf5dic2wzyjf1x5x.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     user: 'nn2sv8r76frguu1j',
     password: 'f6btu922dkwpbpkl',
     database: 'kxqlkxy9ovy8mg96'
 });
-*/
+
 
 
 // BD locale (pour testing)
+/*
 const pool = mysql.createPool({
     host: 'localhost',
     port: 3306,
@@ -34,6 +35,7 @@ const pool = mysql.createPool({
     password: '',
     database: 'eduportail'
 });
+*/
 
 // Exporter le pool pour une utilisation partagée dans toute l'application
 module.exports = pool;
