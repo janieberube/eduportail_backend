@@ -466,7 +466,7 @@ CREATE TABLE IF NOT EXISTS `evaluations_etudiants` (
 --
 
 INSERT INTO `evaluations_etudiants` (`idEvaluation_Etudiant`, `Inscriptions_idInscription`, `Evaluations_idEvaluation`, `datePublication`, `publier`, `notePointage`, `notePourcentage`, `Statut_Evaluation_idStatut`, `retroaction`) VALUES
-(1, 1, 1, '2024-04-09', 1, 4, 80.00, 1, NULL),
+(1, 1, 1, '2024-04-09', 1, 2, 40.00, 1, NULL),
 (2, 1, 2, '2024-04-17', 1, 18, 90.00, 1, 'Excellent! Assures-toi de réviser la syntaxe.'),
 (3, 1, 3, '2024-05-02', 1, 14, 93.33, 1, 'Excellent!'),
 (4, 1, 4, '2024-05-10', 0, 37, 91.25, 1, NULL),
